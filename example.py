@@ -1,10 +1,22 @@
-import cv2
+arr = [9,8,7,5,5,2,1,1,3,3,4]
+n = len(arr)
+# Mean
+mean = sum(arr) / n
+print("Mean:", mean)
 
-img = cv2.imread('tiger.jpg',cv2.IMREAD_GRAYSCALE)
-cv2.imshow('Image',img)
+# Median
+arr.sort()
+if len(arr)%2==0:
+    median = (arr[n//2] + arr[n//2+1] ) / 2
+else:
+    median = arr[n//2]    
+print("Median:", median) 
 
-# hist = cv2.calcHist([img],[0],None,[256],[0,255])
-# print(hist)
+# Mode
+freq = {x:arr.count(x) for x in arr}
+frequencyMax = max(freq.values())
 
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+print("Modes: ",end="")
+for k,v in freq.items():
+    if v == frequencyMax:
+        print(k,end=" ")
